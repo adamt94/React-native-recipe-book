@@ -3,7 +3,7 @@ import { FlatList, Text, View, Image, TouchableHighlight } from "react-native";
 import { getAllIngredients } from "../data/mockDataAPI";
 import { Dimensions } from "react-native";
 import { getRecipeById } from "@/data/mockDataAPI";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Ingredient } from "@/types/recipe";
 // screen sizing
 const { width, height } = Dimensions.get("window");
@@ -16,7 +16,8 @@ export default function IngrediantsScreen() {
 
   const ingredientsArray = getAllIngredients(recipe?.ingredients ?? []);
 
-  const onPressIngredient = (item: any) => {
+  const onPressIngredient = (item: string) => {
+    router.push({ pathname: "ingrediantsByRecipe", params: { id: item} });
   };
 
   const renderIngredient = ({ item }: { item: [Ingredient] }) => {
@@ -24,7 +25,7 @@ export default function IngrediantsScreen() {
       <TouchableHighlight
         className="m-2 rounded-t-lg"
         underlayColor="rgba(73,182,77,0.9)"
-        onPress={() => onPressIngredient(item[0].ingredientId)}
+        onPress={() => onPressIngredient(item[0].ingredientId.toString())}
       >
         <View
           style={{ width: SCREEN_WIDTH / 3 - 16 }}

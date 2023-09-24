@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import {
   ScrollView,
@@ -92,16 +92,15 @@ export default function RecipeScreen({recipe}: RecipeScreenProps) {
           <Text style={styles.infoRecipe}>{recipe?.time} minutes </Text>
         </View>
 
-        <View style={styles.infoContainer}>
+        <View className="py-4">
           <PrimaryButton
             onPress={() => {
               router.push({pathname: "ingrediants", params: { id: recipe?.recipeId }});
-              //navigation.navigate("IngredientsDetails", { ingredients, title });
             }}
           />
         </View>
-        <View style={styles.infoContainer}>
-          <Text style={styles.infoDescriptionRecipe}>{recipe?.description}</Text>
+        <View className="">
+          <Text className="px-2 text-sm">{recipe?.description}</Text>
         </View>
       </View>
     </ScrollView>
@@ -113,7 +112,8 @@ export default function RecipeScreen({recipe}: RecipeScreenProps) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    flex: 1
+    flex: 1,
+
   },
   carouselContainer: {
     minHeight: 250

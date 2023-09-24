@@ -2,6 +2,13 @@
 import { Ingredient, Recipe } from '@/types/recipe';
 import { recipes, categories, ingredients } from  './data'
 
+export function getIngrediantById (ingredientId: number): Ingredient | undefined {
+  const ingredient = ingredients.find(data => data.ingredientId === ingredientId);
+  if (ingredient) {
+    return ingredient;
+  }
+  return undefined;
+}
 
 export function getRecipeById(recipeId: number): Recipe | undefined {
   const recipe = recipes.find(data => data.recipeId === recipeId);
@@ -32,7 +39,7 @@ export function getIngredientName(ingredientID: number) {
 }
 
 export function getIngredientUrl(ingredientID: number) {
-  let url;
+  let url = '';
   ingredients.map(data => {
     if (data.ingredientId == ingredientID) {
       url = data.photo_url;
