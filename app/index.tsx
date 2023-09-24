@@ -1,4 +1,4 @@
-import HomeScreen from '@/components/Home';
+import HomeScreen from '@/screens/Home';
 import { Stack } from 'expo-router';
 
 
