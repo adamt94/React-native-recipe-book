@@ -1,6 +1,10 @@
 
-import { Ingredient, Recipe } from '@/types/recipe';
+import { Category, Ingredient, Recipe } from '@/types/recipe';
 import { recipes, categories, ingredients } from  './data'
+
+export function getCategories(): Category[] {
+  return categories;
+}
 
 export function getIngrediantById (ingredientId: number): Ingredient | undefined {
   const ingredient = ingredients.find(data => data.ingredientId === ingredientId);

@@ -17,7 +17,7 @@ export default function IngrediantsScreen() {
   const ingredientsArray = getAllIngredients(recipe?.ingredients ?? []);
 
   const onPressIngredient = (item: string) => {
-    router.push({ pathname: "ingrediantsByRecipe", params: { id: item} });
+    router.push({ pathname: "ingredientsByRecipe", params: { id: item} });
   };
 
   const renderIngredient = ({ item }: { item: [Ingredient] }) => {

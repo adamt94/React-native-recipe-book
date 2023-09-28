@@ -1,19 +1,15 @@
 import React, { useLayoutEffect } from "react";
 import {
-  FlatList,
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
-  StyleSheet,
   Dimensions,
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
 } from "react-native";
-import {
-  getIngredientUrl,
-  getRecipesByIngredient,
-  getCategoryName,
-} from "../data/mockDataAPI";
+import { getCategoryName } from "../data/mockDataAPI";
 import { Ingredient, Recipe } from "@/types/recipe";
 // screen sizing
 const { width, height } = Dimensions.get("window");
@@ -39,24 +35,23 @@ export default function IngrediantByRecipeScreen({
         underlayColor="rgba(73,182,77,0.9)"
         onPress={() => onPressRecipe(item)}
       >
-       
-          <View
-            style={{ width: SCREEN_WIDTH / 2 - 16 }}
-            className="flex-1 justify-center items-center bg m-2"
-          >
-            <Image
-              className=" rounded-t-lg h-40 w-full object-fill"
-              source={{ uri: item.photo_url }}
-            />
-            <Text className=" text-lg text-center">{item.title}</Text>
-            <Text className="py-2">{getCategoryName(item.categoryId)}</Text>
-          </View>
+        <View
+          style={{ width: SCREEN_WIDTH / 2 - 16 }}
+          className="flex-1 justify-center items-center bg m-2"
+        >
+          <Image
+            className=" rounded-t-lg h-40 w-full object-fill"
+            source={{ uri: item.photo_url }}
+          />
+          <Text className=" text-lg text-center">{item.title}</Text>
+          <Text className="py-2">{getCategoryName(item.categoryId)}</Text>
+        </View>
       </TouchableHighlight>
     );
   };
 
   return (
-    <ScrollView className="">
+    <ScrollView className="flex-1">
       <View
         style={{
           borderBottomWidth: 0.4,
