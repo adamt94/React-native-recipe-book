@@ -17,25 +17,7 @@ type CategoriesScreenProps = {
 export default function CategoriesScreen(
   { categories }: CategoriesScreenProps,
 ) {
-  // useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     headerTitleStyle: {
-  //       fontWeight: "bold",
-  //       textAlign: "center",
-  //       alignSelf: "center",
-  //       flex: 1,
-  //     },
-  //     headerLeft: () => (
-  //       <MenuImage
-  //         onPress={() => {
-  //           navigation.openDrawer();
-  //         }}
-  //       />
-  //     ),
-  //     headerRight: () => <View />,
-  //   });
-  // }, []);
-
+  
   const onPressCategory = () => {
     // const title = item.name;
     // const category = item;
@@ -65,7 +47,6 @@ export default function CategoriesScreen(
       <FlatList
         data={categories}
         renderItem={renderCategory}
-        keyExtractor={(item) => `${item.id}`}
       />
     </View>
   );

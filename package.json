@@ -23,6 +23,7 @@
     "e2e:android": "run-s e2e:android:*"
   },
   "dependencies": {
+    "@expo/vector-icons": "^13.0.0",
     "@react-navigation/drawer": "^6.6.4",
     "expo": "^49.0.5",
     "expo-constants": "~14.4.2",

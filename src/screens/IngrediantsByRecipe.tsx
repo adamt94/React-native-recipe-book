@@ -1,16 +1,15 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import {
   Dimensions,
   FlatList,
   Image,
-  ScrollView,
-  StyleSheet,
   Text,
   TouchableHighlight,
   View,
 } from "react-native";
 import { getCategoryName } from "../data/mockDataAPI";
 import { Ingredient, Recipe } from "@/types/recipe";
+import { router } from "expo-router";
 // screen sizing
 const { width, height } = Dimensions.get("window");
 // orientation must fixed
@@ -26,10 +25,10 @@ export default function IngrediantByRecipeScreen({
   ingredient,
 }: IngrediantByRecipeScreenProps) {
   const onPressRecipe = (item: Recipe) => {
-    //navigation.navigate("Recipe", { item });
+    router.push({ pathname: "recipe", params: { id: item.recipeId } });
   };
 
-  const renderRecipes = ({ item }) => {
+  const renderRecipes = ({ item }: { item: Recipe }) => {
     return (
       <TouchableHighlight
         underlayColor="rgba(73,182,77,0.9)"
@@ -51,20 +50,15 @@ export default function IngrediantByRecipeScreen({
   };
 
   return (
-    <ScrollView className="flex-1">
-      <View
-        style={{
-          borderBottomWidth: 0.4,
-          marginBottom: 10,
-          borderBottomColor: "grey",
-        }}
-      >
+    <>
+      <Text>{ingredient.name}</Text>
+      <View>
         <Image
-          style={styles.photoIngredient}
+          className="w-full h-60"
           source={{ uri: "" + ingredient.photo_url }}
         />
       </View>
-      <Text style={styles.ingredientInfo}>Recipes with {ingredient.name}:</Text>
+      <Text className="">Recipes with {ingredient.name}:</Text>
       <View>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -73,25 +67,6 @@ export default function IngrediantByRecipeScreen({
           renderItem={renderRecipes}
         />
       </View>
-    </ScrollView>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  titleIngredient: {
-    fontWeight: "bold",
-    fontSize: 20,
-  },
-  photoIngredient: {
-    width: "100%",
-    height: 250,
-    alignSelf: "center",
-  },
-  ingredientInfo: {
-    color: "black",
-    margin: 10,
-    fontSize: 19,
-    textAlign: "left",
-    fontWeight: "bold",
-  },
-});

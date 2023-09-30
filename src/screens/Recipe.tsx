@@ -74,8 +74,7 @@ export default function RecipeScreen({recipe}: RecipeScreenProps) {
         <View style={styles.infoContainer}>
           <TouchableHighlight
             onPress={() =>
-              //navigation.navigate("RecipesList", { category, title })
-              console.log('clicked')
+              router.push({pathname: "categories"})
             }
           >
             <Text style={styles.category}>
