@@ -1,19 +1,19 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import {
+  Dimensions,
   FlatList,
   Image,
   Pressable,
-  StyleSheet,
   Text,
   TouchableHighlight,
-  Dimensions,
   View,
 } from "react-native";
 
 import { TextInput } from "react-native-gesture-handler";
 import { getCategoryName, getRecipesByRecipeName } from "@/data/mockDataAPI";
-import { useNavigation } from "expo-router";
+import { router, useNavigation } from "expo-router";
 import { Recipe } from "@/types/recipe";
+import { Ionicons } from "@expo/vector-icons";
 
 // screen sizing
 const { width, height } = Dimensions.get("window");
@@ -28,25 +28,19 @@ export default function SearchScreen() {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => (
-        <View style={styles.searchContainer}>
-          {
-            /* <Image
-             style={styles.searchIcon}
-             source={require("../../../assets/icons/search.png")}
-           /> */
-          }
+        <View className="flex flex-row justify-center items-center w-64 rounded-lg px-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block">
+          <Ionicons
+            className="px-2"
+            name="search-sharp"
+            size={24}
+            color="grey"
+          />
           <TextInput
-            style={styles.searchInput}
+            className="text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
             onChangeText={handleSearch}
             value={value}
           />
-          <Pressable onPress={() => handleSearch("")}>
-            {
-              /* <Image
-              style={styles.searchIcon}
-              source={require("../../../assets/icons/close.png")}
-            /> */
-            }
+          <Pressable onPress={() => handleSearch(value)}>
           </Pressable>
         </View>
       ),
@@ -54,22 +48,14 @@ export default function SearchScreen() {
     });
   }, [value]);
 
-  // useEffect(() => {}, [value]);
-  //
   const handleSearch = (text: string) => {
     setValue(text);
     const recipes = getRecipesByRecipeName(text);
-
-    //   var recipeArray1 = getRecipesByRecipeName(text);
-    //  var recipeArray2 = getRecipesByCategoryName(text);
-    // var recipeArray3 = getRecipesByIngredientName(text);
-    //var aux = recipeArray1.concat(recipeArray2);
-    //var recipeArray = [...new Set(aux)];
     setData(recipes);
   };
 
-  const onPressRecipe = (item: any) => {
-    // navigation.navigate("Recipe", { item });
+  const onPressRecipe = (item: Recipe) => {
+    router.push({ pathname: "recipe", params: { id: item.recipeId } });
   };
 
   const renderRecipes = ({ item }: { item: Recipe }) => (
@@ -105,33 +91,3 @@ export default function SearchScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  // container: RecipeCard.container,
-  // photo: RecipeCard.photo,
-  // title: RecipeCard.title,
-  // category: RecipeCard.category,
-  btnIcon: {
-    height: 14,
-    width: 14,
-  },
-  searchContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#EDEDED",
-    borderRadius: 10,
-    width: 250,
-    justifyContent: "space-around",
-  },
-  searchIcon: {
-    width: 20,
-    height: 20,
-    tintColor: "grey",
-  },
-  searchInput: {
-    backgroundColor: "#EDEDED",
-    color: "black",
-    width: 180,
-    height: 50,
-  },
-});
