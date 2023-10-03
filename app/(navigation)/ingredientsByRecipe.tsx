@@ -1,11 +1,11 @@
-import { getIngrediantById, getRecipesByIngredient } from "@/data/mockDataAPI";
-import IngrediantByRecipeScreen from "@/screens/IngrediantsByRecipe";
+import { getIngredientById, getRecipesByIngredient } from "@/data/mockDataAPI";
+import IngrediantByRecipeScreen from "@/screens/IngredientsByRecipe";
 import { useLocalSearchParams } from "expo-router";
 import { Text } from "react-native";
 
 export default function IngrediantByRecipe() {
   const { id } = useLocalSearchParams();
-  const ingredient = getIngrediantById(Number(id));
+  const ingredient = getIngredientById(Number(id));
   const recipes = getRecipesByIngredient(Number(id));
   if (ingredient === undefined) return <Text>undefined ingredient</Text>;
   return (

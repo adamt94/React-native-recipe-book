@@ -5,7 +5,7 @@ export function getCategories(): Category[] {
   return categories;
 }
 
-export function getIngrediantById(
+export function getIngredientById(
   ingredientId: number,
 ): Ingredient | undefined {
   const ingredient = ingredients.find((data) =>
@@ -55,26 +55,6 @@ export function getRecipesByCategoryID(categoryID: number) {
     }
   });
   return recipesArray;
-}
-
-export function getIngredientName(ingredientID: number) {
-  let name;
-  ingredients.map((data) => {
-    if (data.ingredientId == ingredientID) {
-      name = data.name;
-    }
-  });
-  return name;
-}
-
-export function getIngredientUrl(ingredientID: number) {
-  let url = "";
-  ingredients.map((data) => {
-    if (data.ingredientId == ingredientID) {
-      url = data.photo_url;
-    }
-  });
-  return url;
 }
 
 export function getCategoryName(categoryId: number) {
@@ -130,38 +110,6 @@ export function getAllIngredients(idArray: [number, string][]) {
     });
   });
   return ingredientsArray;
-}
-
-// functions for search
-export function getRecipesByIngredientName(ingredientName: string) {
-  const nameUpper = ingredientName.toUpperCase();
-  const recipesArray: Recipe[] = [];
-  ingredients.map((data) => {
-    if (data.name.toUpperCase().includes(nameUpper)) {
-      // data.name.yoUpperCase() == nameUpper
-      const recipes = getRecipesByIngredient(data.ingredientId);
-      const unique = [...new Set(recipes)];
-      unique.map((item) => {
-        recipesArray.push(item);
-      });
-    }
-  });
-  const uniqueArray = [...new Set(recipesArray)];
-  return uniqueArray;
-}
-
-export function getRecipesByCategoryName(categoryName: string) {
-  const nameUpper = categoryName.toUpperCase();
-  const recipesArray: Recipe[] = [];
-  categories.map((data) => {
-    if (data.name.toUpperCase().includes(nameUpper)) {
-      const recipes = getRecipes(data.id); // return a vector of recipes
-      recipes.map((item) => {
-        recipesArray.push(item);
-      });
-    }
-  });
-  return recipesArray;
 }
 
 export function getRecipesByRecipeName(recipeName: string) {
