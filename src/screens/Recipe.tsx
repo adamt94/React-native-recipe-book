@@ -30,7 +30,7 @@ export default function RecipeScreen({ recipe }: RecipeScreenProps) {
         <Text className="text-2xl font-bold py-2">{recipe?.title}</Text>
         <View className="">
           <TouchableHighlight
-            onPress={() => router.push({ pathname: "categories" })}
+            onPress={() => router.push({ pathname: "(drawer)/categories" })}
           >
             <Text className="font-bold py-2">
               {getCategoryName(recipe?.categoryId || 1).toUpperCase()}

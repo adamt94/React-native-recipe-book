@@ -20,7 +20,7 @@ const SCREEN_WIDTH = width < height ? width : height;
 export default function HomeScreen() {
 
   const onPressRecipe = (item: Recipe) => {
-    router.push({pathname: "recipe", params: { id: item.recipeId }});
+    router.push({pathname: "(navigation)/recipe", params: { id: item.recipeId }});
   };
 
   const renderRecipes = ({ item }: { item: Recipe}) => (
