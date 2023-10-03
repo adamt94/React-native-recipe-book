@@ -1,9 +1,9 @@
-import IngrediantsScreen from '@/screens/Ingrediants';
+import IngredientsScreen from '@/screens/Ingredients';
 
 
 const Ingrediants = () => (
   <>
-    <IngrediantsScreen/>
+    <IngredientsScreen/>
   </>
 );
 

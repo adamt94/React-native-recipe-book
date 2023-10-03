@@ -14,6 +14,7 @@ export default function Recipe() {
   return (
     <>
     <Stack.Screen
+      
     options={{
       title: recipe.title,
       

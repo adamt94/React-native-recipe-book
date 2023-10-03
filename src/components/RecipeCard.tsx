@@ -18,14 +18,14 @@ export default function RecipeCard({
 }: RecipeCardProps) {
   return (
  <TouchableHighlight
-    className="m-2 rounded-t-lg"
+    className="m-2 rounded-xl"
     underlayColor={'#ccc'}
       onPress={() => onPress(recipe)}
     >
-      <View style={{width:SCREEN_WIDTH/2 - 16  }} className="flex-1 justify-center items-center bg">
+      <View style={{width:SCREEN_WIDTH/2 - 16  }} className="flex-1 rounded-xl bg-primaryContainer justify-center items-center bg">
         <Image className=" rounded-t-lg h-40 w-full object-fill" source={{ uri: recipe.photo_url }} />
-        <Text className=" text-lg text-center">{recipe.title}</Text>
-        <Text className="py-2">{getCategoryName(recipe.categoryId)}</Text>
+        <Text className=" text-lg text-center text-onPrimaryContainer">{recipe.title}</Text>
+        <Text className="py-2 text-onSurface">{getCategoryName(recipe.categoryId)}</Text>
       </View>
     </TouchableHighlight>
 

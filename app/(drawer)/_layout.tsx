@@ -3,16 +3,30 @@ import { Drawer } from "expo-router/drawer";
 import { TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import resolveConfig from 'tailwindcss/resolveConfig'
+import myConfig from '../../tailwind.config.js'
+
 
 export const unstable_settings = {
   initialRouteName: "home",
 };
 
 export default function Layout() {
+const { theme } = resolveConfig(myConfig);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
+
         screenOptions={{
+           headerStyle: {
+          backgroundColor: theme.backgroundColor.primaryContainer as string,
+       },
+        headerTitleStyle: {
+          color: theme.textColor.onPrimaryContainer
+        },
+        headerTintColor: theme.textColor.onPrimaryContainer,
+
           headerRightContainerStyle: {
             paddingRight: 20,
           },

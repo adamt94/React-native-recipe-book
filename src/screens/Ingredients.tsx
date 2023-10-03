@@ -10,7 +10,7 @@ const { width, height } = Dimensions.get("window");
 // orientation must fixed
 const SCREEN_WIDTH = width < height ? width : height;
 
-export default function IngrediantsScreen() {
+export default function IngredientsScreen() {
   const { id } = useLocalSearchParams();
   const recipe = getRecipeById(parseInt(id as string));
 
@@ -24,20 +24,19 @@ export default function IngrediantsScreen() {
   const renderIngredient = ({ item }: { item: [Ingredient] }) => {
     return (
       <TouchableHighlight
-        className="m-2 rounded-t-lg"
+        className="m-2 rounded-t-lg bg-primaryContainer rounded-lg"
         underlayColor="rgba(73,182,77,0.9)"
         onPress={() => onPressIngredient(item[0].ingredientId.toString())}
       >
         <View
           style={{ width: SCREEN_WIDTH / 3 - 16 }}
-          className="flex-1 justify-center items-center bg"
+          className="flex-1 justify-center items-center pb-2"
         >
           <Image
-            className="rounded-t-lg h-32 w-full object-contain"
+            className="rounded-t-lg h-32 w-full object-contain bg-surface"
             source={{ uri: item[0].photo_url }}
           />
-          <Text className="pt-1">{item[0].name}</Text>
-          <Text className="pt-1">{item[0].name}</Text>
+          <Text className="pt-1 text-onPrimaryContainer">{item[0].name}</Text>
         </View>
       </TouchableHighlight>
     );
