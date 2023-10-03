@@ -10,6 +10,7 @@ import {
 import { getCategoryName } from "../data/mockDataAPI";
 import { Ingredient, Recipe } from "@/types/recipe";
 import { router } from "expo-router";
+import RecipeCard from "@/components/RecipeCard";
 // screen sizing
 const { width, height } = Dimensions.get("window");
 // orientation must fixed
@@ -25,28 +26,14 @@ export default function IngrediantByRecipeScreen({
   ingredient,
 }: IngrediantByRecipeScreenProps) {
   const onPressRecipe = (item: Recipe) => {
-    router.push({ pathname: "(navigation)/recipe", params: { id: item.recipeId } });
+    router.push({
+      pathname: "(navigation)/recipe",
+      params: { id: item.recipeId },
+    });
   };
 
   const renderRecipes = ({ item }: { item: Recipe }) => {
-    return (
-      <TouchableHighlight
-        underlayColor="rgba(73,182,77,0.9)"
-        onPress={() => onPressRecipe(item)}
-      >
-        <View
-          style={{ width: SCREEN_WIDTH / 2 - 16 }}
-          className="flex-1 justify-center items-center bg m-2"
-        >
-          <Image
-            className=" rounded-t-lg h-40 w-full object-fill"
-            source={{ uri: item.photo_url }}
-          />
-          <Text className=" text-lg text-center">{item.title}</Text>
-          <Text className="py-2">{getCategoryName(item.categoryId)}</Text>
-        </View>
-      </TouchableHighlight>
-    );
+    return <RecipeCard recipe={item} onPress={onPressRecipe} />;
   };
 
   return (
@@ -58,7 +45,9 @@ export default function IngrediantByRecipeScreen({
           source={{ uri: "" + ingredient.photo_url }}
         />
       </View>
-      <Text className="">Recipes with {ingredient.name}:</Text>
+      <Text className="text-xl text-center py-2">
+        Recipes with {ingredient.name}
+      </Text>
       <View>
         <FlatList
           showsVerticalScrollIndicator={false}

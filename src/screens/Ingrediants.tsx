@@ -20,6 +20,7 @@ export default function IngrediantsScreen() {
     router.push({ pathname: "ingredientsByRecipe", params: { id: item} });
   };
 
+
   const renderIngredient = ({ item }: { item: [Ingredient] }) => {
     return (
       <TouchableHighlight
