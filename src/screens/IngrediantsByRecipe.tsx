@@ -1,20 +1,13 @@
 import React from "react";
 import {
-  Dimensions,
   FlatList,
   Image,
   Text,
-  TouchableHighlight,
   View,
 } from "react-native";
-import { getCategoryName } from "../data/mockDataAPI";
 import { Ingredient, Recipe } from "@/types/recipe";
 import { router } from "expo-router";
 import RecipeCard from "@/components/RecipeCard";
-// screen sizing
-const { width, height } = Dimensions.get("window");
-// orientation must fixed
-const SCREEN_WIDTH = width < height ? width : height;
 
 type IngrediantByRecipeScreenProps = {
   recipes: Recipe[];

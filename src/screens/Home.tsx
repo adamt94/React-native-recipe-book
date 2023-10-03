@@ -1,10 +1,6 @@
 import React from "react";
 import {
-  Dimensions,
   FlatList,
-  Image,
-  Text,
-  TouchableHighlight,
   View,
 } from "react-native";
 import { recipes } from "../data/data";
@@ -22,7 +18,7 @@ export default function HomeScreen() {
     <RecipeCard recipe={item} onPress={onPressRecipe} /> );
 
   return (
-    <View className="w-screen">
+    <View className="w-screen bg-surface dark:bg-surfaceDark">
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}

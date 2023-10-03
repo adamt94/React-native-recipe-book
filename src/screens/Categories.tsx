@@ -2,13 +2,7 @@ import { getNumberOfRecipes } from "@/data/mockDataAPI";
 import { Category } from "@/types/recipe";
 import { router } from "expo-router";
 import React from "react";
-import {
-  FlatList,
-  Image,
-  Text,
-  TouchableHighlight,
-  View,
-} from "react-native";
+import { FlatList, Image, Text, TouchableHighlight, View } from "react-native";
 
 type CategoriesScreenProps = {
   categories: Category[];
@@ -17,15 +11,11 @@ type CategoriesScreenProps = {
 export default function CategoriesScreen(
   { categories }: CategoriesScreenProps,
 ) {
-  
   const onPressCategory = (item: Category) => {
-    // const title = item.name;
-    // const category = item;
-    //router.push("recipe", {})
-    // navigation.navigate("RecipesList", { category, title });
+    router.push({ pathname: "recipesByCategory", params: { id: item.id } });
   };
 
-  const renderCategory = ({ item }: { item: Category}) => (
+  const renderCategory = ({ item }: { item: Category }) => (
     <TouchableHighlight
       underlayColor="rgba(73,182,77,0.9)"
       onPress={() => onPressCategory(item)}
@@ -52,5 +42,3 @@ export default function CategoriesScreen(
     </View>
   );
 }
-
-
