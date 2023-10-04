@@ -1,16 +1,12 @@
 import React, { useLayoutEffect, useState } from "react";
 import {
-  Dimensions,
   FlatList,
-  Image,
   Pressable,
-  Text,
-  TouchableHighlight,
   View,
 } from "react-native";
 
 import { TextInput } from "react-native-gesture-handler";
-import { getCategoryName, getRecipesByRecipeName } from "@/data/mockDataAPI";
+import { getRecipesByRecipeName } from "@/data/mockDataAPI";
 import { router, useNavigation } from "expo-router";
 import { Recipe } from "@/types/recipe";
 import { Ionicons } from "@expo/vector-icons";
@@ -60,7 +56,7 @@ export default function SearchScreen() {
   );
 
   return (
-    <View className="w-screen">
+    <View className="w-screen bg-surface dark:bg-surfaceDark">
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}

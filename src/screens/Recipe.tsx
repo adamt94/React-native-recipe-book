@@ -17,7 +17,7 @@ type RecipeScreenProps = {
 };
 export default function RecipeScreen({ recipe }: RecipeScreenProps) {
   return (
-    <ScrollView className="bg-surfaceHighest">
+    <ScrollView className="bg-surfaceContainerHighest dark:bg-surfaceContainerHighestDark">
       <View className="">
         <View className="">
           <Image
@@ -27,19 +27,19 @@ export default function RecipeScreen({ recipe }: RecipeScreenProps) {
         </View>
       </View>
       <View className="flex flex-col items-center p-2 py-4">
-        <Text className="text-2xl font-bold py-2 text-onSurface">{recipe?.title}</Text>
+        <Text className="text-2xl font-bold py-2 text-onSurface dark:text-onSurfaceDark">{recipe?.title}</Text>
         <View className="">
           <TouchableHighlight
             onPress={() => router.push({ pathname: "(drawer)/categories" })}
           >
-            <Text className="font-bold py-2 text-primary">
+            <Text className="font-bold py-2 text-primary dark:text-primaryDark">
               {getCategoryName(recipe?.categoryId || 1).toUpperCase()}
             </Text>
           </TouchableHighlight>
         </View>
 
         <View>
-          <Text className="font-bold">{recipe?.time} minutes</Text>
+          <Text className="font-bold text-onSurface dark:text-onSurfaceDark">{recipe?.time} minutes</Text>
         </View>
 
         <View className="py-4">
@@ -53,7 +53,7 @@ export default function RecipeScreen({ recipe }: RecipeScreenProps) {
           />
         </View>
         <View className="">
-          <Text className="px-2 text-sm text-onSurface">{recipe?.description}</Text>
+          <Text className="px-2 text-sm text-onSurface dark:text-onSurfaceDark">{recipe?.description}</Text>
         </View>
       </View>
     </ScrollView>

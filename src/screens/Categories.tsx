@@ -17,7 +17,6 @@ export default function CategoriesScreen(
 
   const renderCategory = ({ item }: { item: Category }) => (
     <TouchableHighlight
-      underlayColor="rgba(73,182,77,0.9)"
       onPress={() => onPressCategory(item)}
     >
       <View className=" flex flex-col items-center p-2">
@@ -25,8 +24,8 @@ export default function CategoriesScreen(
           className="h-32 w-full rounded-t-3xl"
           source={{ uri: item.photo_url }}
         />
-        <Text className="text-xl font-bold py-2">{item.name}</Text>
-        <Text>
+        <Text className="text-xl font-bold py-2 text-onSurface dark:text-onSurfaceDark">{item.name}</Text>
+        <Text className="text-primary dark:text-primaryDark">
           {getNumberOfRecipes(item.id)} recipes
         </Text>
       </View>
@@ -34,7 +33,7 @@ export default function CategoriesScreen(
   );
 
   return (
-    <View>
+    <View className="bg-surface dark:bg-surfaceDark">
       <FlatList
         data={categories}
         renderItem={renderCategory}

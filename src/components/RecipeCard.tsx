@@ -22,10 +22,10 @@ export default function RecipeCard({
     underlayColor={'#ccc'}
       onPress={() => onPress(recipe)}
     >
-      <View style={{width:SCREEN_WIDTH/2 - 16  }} className="flex-1 rounded-xl bg-primaryContainer justify-center items-center bg">
+      <View style={{width:SCREEN_WIDTH/2 - 16  }} className="flex-1 rounded-xl bg-primaryContainer dark:bg-primaryContainerDark justify-center items-center bg">
         <Image className=" rounded-t-lg h-40 w-full object-fill" source={{ uri: recipe.photo_url }} />
-        <Text className=" text-lg text-center text-onPrimaryContainer">{recipe.title}</Text>
-        <Text className="py-2 text-onSurface">{getCategoryName(recipe.categoryId)}</Text>
+        <Text className=" text-lg text-center text-onPrimaryContainer dark:text-onPrimaryContainerDark">{recipe.title}</Text>
+        <Text className="py-2 text-onSurface dark:text-onSurfaceDark">{getCategoryName(recipe.categoryId)}</Text>
       </View>
     </TouchableHighlight>
 

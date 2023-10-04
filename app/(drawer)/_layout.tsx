@@ -1,6 +1,6 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
-import { TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View, useColorScheme } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import resolveConfig from 'tailwindcss/resolveConfig'
@@ -13,23 +13,24 @@ export const unstable_settings = {
 
 export default function Layout() {
 const { theme } = resolveConfig(myConfig);
+const colorScheme = useColorScheme();
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
-
         screenOptions={{
            headerStyle: {
-          backgroundColor: theme.backgroundColor.primaryContainer,
+            backgroundColor: colorScheme === 'light'? theme.backgroundColor.primaryContainer : theme.backgroundColor.primaryContainerDark,
        },
-        drawerActiveTintColor: theme.backgroundColor.primary,
+          drawerActiveTintColor: colorScheme === 'light'? theme.backgroundColor.primary : theme.backgroundColor.primaryDark,
+          drawerInactiveTintColor: colorScheme === 'light'? theme.backgroundColor.onPrimaryContainer : theme.backgroundColor.onPrimaryContainerDark,
           drawerStyle: {
-          backgroundColor: theme.backgroundColor.primaryContainer,
+            backgroundColor: colorScheme === 'light'? theme.backgroundColor.primaryContainer : theme.backgroundColor.primaryContainerDark,
           },
         headerTitleStyle: {
-          color: theme.textColor.onPrimaryContainer
+            color: colorScheme === 'light'? theme.textColor.onPrimaryContainer : theme.textColor.onPrimaryContainerDark
         },
-        headerTintColor: theme.textColor.onPrimaryContainer,
+          headerTintColor: colorScheme === 'light'? theme.textColor.onPrimaryContainer : theme.textColor.onPrimaryContainerDark,
 
           headerRightContainerStyle: {
             paddingRight: 20,
@@ -40,7 +41,7 @@ const { theme } = resolveConfig(myConfig);
                 router.push({ pathname: "/(navigation)/search" });
               }}
             >
-              <View className="bg-blue-500 rounded-full items-center justify-center">
+              <View className="rounded-full items-center justify-center">
                 <Ionicons name="search-sharp" size={24} color="black" />
               </View>
             </TouchableOpacity>

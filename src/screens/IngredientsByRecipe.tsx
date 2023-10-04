@@ -33,15 +33,14 @@ export default function IngrediantByRecipeScreen({
 
   return (
     <>
-      <Text>{ingredient.name}</Text>
       <View>
         <Image
           className="w-full h-60"
           source={{ uri: "" + ingredient.photo_url }}
         />
       </View>
-      <Text className="text-xl text-center py-2">
-        Recipes with {ingredient.name}
+      <Text className="text-xl text-center py-2 text-onSurface font-bold dark:text-onSurfaceDark">
+        {ingredient.name}
       </Text>
       <View>
         <FlatList
