@@ -8,24 +8,28 @@ const { width, height } = Dimensions.get("window");
 const SCREEN_WIDTH = width < height ? width : height;
 
 type RecipeCardProps = {
-  recipe: Recipe
-  onPress: (item: Recipe) => void;
+  image: string;
+  title: string;
+  subTitle: string;
+  onPress: () => void;
 };
 
 export default function RecipeCard({
-  recipe,
+  image,
+  title,
+  subTitle,
   onPress,
 }: RecipeCardProps) {
   return (
  <TouchableHighlight
     className="m-2 rounded-xl"
     underlayColor={'#ccc'}
-      onPress={() => onPress(recipe)}
+      onPress={() => onPress()}
     >
       <View style={{width:SCREEN_WIDTH/2 - 16  }} className="flex-1 rounded-xl bg-primaryContainer dark:bg-primaryContainerDark justify-center items-center bg">
-        <Image className=" rounded-t-lg h-40 w-full object-fill" source={{ uri: recipe.photo_url }} />
-        <Text className=" text-lg text-center text-onPrimaryContainer dark:text-onPrimaryContainerDark">{recipe.title}</Text>
-        <Text className="py-2 text-onSurface dark:text-onSurfaceDark">{getCategoryName(recipe.categoryId)}</Text>
+        <Image className=" rounded-t-lg h-40 w-full object-fill" source={{ uri: image }} />
+        <Text className=" text-lg text-center text-onPrimaryContainer px-1 dark:text-onPrimaryContainerDark">{title}</Text>
+        <Text className="py-2 text-onSurface dark:text-onSurfaceDark">{subTitle}</Text>
       </View>
     </TouchableHighlight>
 

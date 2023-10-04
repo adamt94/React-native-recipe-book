@@ -6,7 +6,7 @@ import {
 } from "react-native";
 
 import { TextInput } from "react-native-gesture-handler";
-import { getRecipesByRecipeName } from "@/data/mockDataAPI";
+import { getCategoryName, getRecipesByRecipeName } from "@/data/mockDataAPI";
 import { router, useNavigation } from "expo-router";
 import { Recipe } from "@/types/recipe";
 import { Ionicons } from "@expo/vector-icons";
@@ -52,7 +52,7 @@ export default function SearchScreen() {
   };
 
   const renderRecipes = ({ item }: { item: Recipe }) => (
-    <RecipeCard recipe={item} onPress={onPressRecipe}/> 
+    <RecipeCard image={item.photo_url} title={item.title} subTitle={ getCategoryName(item.categoryId)} onPress={()=>{onPressRecipe(item)}}/> 
   );
 
   return (

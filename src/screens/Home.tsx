@@ -7,6 +7,7 @@ import { recipes } from "../data/data";
 import { router } from "expo-router";
 import { Recipe } from "@/types/recipe";
 import RecipeCard from "@/components/RecipeCard";
+import { getCategoryName } from "@/data/mockDataAPI";
 
 export default function HomeScreen() {
 
@@ -15,7 +16,7 @@ export default function HomeScreen() {
   };
 
   const renderRecipes = ({ item }: { item: Recipe}) => (
-    <RecipeCard recipe={item} onPress={onPressRecipe} /> );
+    <RecipeCard image={item.photo_url} title={item.title} subTitle={getCategoryName(item.categoryId)} onPress={()=>onPressRecipe(item)} /> );
 
   return (
     <View className="w-screen bg-surface dark:bg-surfaceDark">
