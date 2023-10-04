@@ -1,8 +1,10 @@
 import React from "react";
 import {
+  Dimensions,
   FlatList,
   Image,
   Text,
+  TouchableHighlight,
   View,
 } from "react-native";
 import { Ingredient, Recipe } from "@/types/recipe";

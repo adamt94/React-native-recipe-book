@@ -4,7 +4,7 @@ import { TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import resolveConfig from 'tailwindcss/resolveConfig'
-import myConfig from '../../tailwind.config.js'
+const myConfig = require('../../tailwind.config.js')
 
 
 export const unstable_settings = {
@@ -20,8 +20,12 @@ const { theme } = resolveConfig(myConfig);
 
         screenOptions={{
            headerStyle: {
-          backgroundColor: theme.backgroundColor.primaryContainer as string,
+          backgroundColor: theme.backgroundColor.primaryContainer,
        },
+        drawerActiveTintColor: theme.backgroundColor.primary,
+          drawerStyle: {
+          backgroundColor: theme.backgroundColor.primaryContainer,
+          },
         headerTitleStyle: {
           color: theme.textColor.onPrimaryContainer
         },

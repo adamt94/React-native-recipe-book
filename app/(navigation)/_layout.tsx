@@ -1,7 +1,7 @@
 import React from "react";
 import { router, Stack } from "expo-router";
 import resolveConfig from 'tailwindcss/resolveConfig'
-import myConfig from '../../tailwind.config.js'
+const myConfig = require('../../tailwind.config.js')
 import { View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -13,7 +13,7 @@ export default function Layout() {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: theme.backgroundColor.primaryContainer as string,
+          backgroundColor: theme.backgroundColor.primaryContainer,
        },
         headerTitleStyle: {
           color: theme.textColor.onPrimaryContainer
