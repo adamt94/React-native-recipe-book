@@ -25,7 +25,7 @@ export default function IngredientsScreen() {
   };
 
   return (
-    <View className="bg-surface dark:bg-surfaceDark h-full">
+    <View className="bg-surfaceHighest dark:bg-surfaceHighestDark h-full">
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={3}

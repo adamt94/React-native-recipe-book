@@ -11,7 +11,7 @@ export default function Category() {
     <>
       <Stack.Screen
         options={{
-          title: "categories",
+          title: "Categories",
         }}
       />
       <CategoriesScreen categories={categories} />
