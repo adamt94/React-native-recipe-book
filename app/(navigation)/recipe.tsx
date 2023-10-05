@@ -6,25 +6,19 @@ import { getRecipeById } from "@/data/mockDataAPI";
 
 export default function Recipe() {
   const { id } = useLocalSearchParams();
-    
-  const recipe = getRecipeById(parseInt(id as string)); 
 
-  if(!recipe) return (<></>);
+  const recipe = getRecipeById(parseInt(id as string));
+
+  if (!recipe) return <></>;
 
   return (
     <>
-    <Stack.Screen
-      
-    options={{
-      title: recipe.title,
-      
-    }}
-  />
-   <RecipeScreen recipe={recipe}/>
-   </>
-
+      <Stack.Screen
+        options={{
+          title: recipe.title,
+        }}
+      />
+      <RecipeScreen recipe={recipe} />
+    </>
   );
 }
-
-
-

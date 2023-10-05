@@ -11,13 +11,12 @@ import { router } from "expo-router";
 import PrimaryButton from "@/components/PrimaryButton";
 import { Recipe } from "@/types/recipe";
 
-
 type RecipeScreenProps = {
   recipe: Recipe;
 };
 export default function RecipeScreen({ recipe }: RecipeScreenProps) {
   return (
-    <ScrollView className="bg-surfaceContainerHighest dark:bg-surfaceContainerHighestDark">
+    <ScrollView className="bg-surfaceContainer dark:bg-surfaceContainerDark">
       <View className="">
         <View className="">
           <Image
@@ -27,19 +26,23 @@ export default function RecipeScreen({ recipe }: RecipeScreenProps) {
         </View>
       </View>
       <View className="flex flex-col items-center p-2 py-4">
-        <Text className="text-2xl font-bold py-2 text-onSurface dark:text-onSurfaceDark">{recipe?.title}</Text>
+        <Text className="text-2xl font-bold py-2 text-onSurfaceVariant dark:text-onSurfaceVariantDark">
+          {recipe?.title}
+        </Text>
         <View className="">
           <TouchableHighlight
             onPress={() => router.push({ pathname: "(drawer)/categories" })}
           >
-            <Text className="font-bold py-2 text-primary dark:text-primaryDark">
+            <Text className="font-bold py-2 text-tertiary dark:text-tertiaryDark">
               {getCategoryName(recipe?.categoryId || 1).toUpperCase()}
             </Text>
           </TouchableHighlight>
         </View>
 
         <View>
-          <Text className="font-bold text-onSurface dark:text-onSurfaceDark">{recipe?.time} minutes</Text>
+          <Text className="font-bold text-outline dark:text-outlineDark">
+            {recipe?.time} minutes
+          </Text>
         </View>
 
         <View className="py-4">
@@ -53,7 +56,9 @@ export default function RecipeScreen({ recipe }: RecipeScreenProps) {
           />
         </View>
         <View className="">
-          <Text className="px-2 text-sm text-onSurface dark:text-onSurfaceDark">{recipe?.description}</Text>
+          <Text className="px-2 text-sm text-onSurface dark:text-onSurfaceDark">
+            {recipe?.description}
+          </Text>
         </View>
       </View>
     </ScrollView>

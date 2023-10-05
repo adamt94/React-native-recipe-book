@@ -1,5 +1,5 @@
 import { getCategoryByID, getRecipesByCategoryID } from "@/data/mockDataAPI";
-import { useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 import React from "react";
 import RecipesByCategoryScreen from "@/screens/RecipesByCategory";
 
@@ -10,6 +10,12 @@ export default function RecipesByCategory() {
   if (category === undefined) return <>undefined ingredient</>;
   return (
     <>
+      <Stack.Screen
+        options={{
+          title: "Recipes",
+        }}
+      />
+
       <RecipesByCategoryScreen recipes={recipes} category={category} />
     </>
   );

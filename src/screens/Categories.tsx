@@ -17,6 +17,7 @@ export default function CategoriesScreen(
 
   const renderCategory = ({ item }: { item: Category }) => (
     <TouchableHighlight
+      underlayColor="rgba(0,0,0,0.1)"
       onPress={() => onPressCategory(item)}
     >
       <View className=" flex flex-col items-center p-2">

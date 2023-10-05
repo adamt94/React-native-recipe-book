@@ -1,6 +1,6 @@
 import { getIngredientById, getRecipesByIngredient } from "@/data/mockDataAPI";
 import IngrediantByRecipeScreen from "@/screens/IngredientsByRecipe";
-import { useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 import { Text, View } from "react-native";
 
 export default function IngrediantByRecipe() {
@@ -10,6 +10,12 @@ export default function IngrediantByRecipe() {
   if (ingredient === undefined) return <Text>undefined ingredient</Text>;
   return (
     <View className="bg-surface dark:bg-surfaceDark h-full">
+      <Stack.Screen
+        options={{
+          title: "Recipes",
+        }}
+      />
+
       <IngrediantByRecipeScreen recipes={recipes} ingredient={ingredient} />
     </View>
   );

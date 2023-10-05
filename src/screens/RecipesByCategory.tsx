@@ -1,13 +1,9 @@
 import React from "react";
-import {
-  FlatList,
-  Image,
-  Text,
-  View,
-} from "react-native";
+import { FlatList, Image, Text, View } from "react-native";
 import { Category, Recipe } from "@/types/recipe";
 import { router } from "expo-router";
 import RecipeCard from "@/components/RecipeCard";
+import { getCategoryName } from "@/data/mockDataAPI";
 
 type IngrediantByRecipeScreenProps = {
   recipes: Recipe[];
@@ -26,7 +22,16 @@ export default function RecipesByCategory({
   };
 
   const renderRecipes = ({ item }: { item: Recipe }) => {
-    return <RecipeCard recipe={item} onPress={onPressRecipe} />;
+    return (
+      <RecipeCard
+        image={item.photo_url}
+        title={item.title}
+        subTitle={getCategoryName(item.categoryId)}
+        onPress={() => {
+          onPressRecipe(item);
+        }}
+      />
+    );
   };
 
   return (

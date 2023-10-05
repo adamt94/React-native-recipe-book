@@ -29,7 +29,16 @@ export default function IngrediantByRecipeScreen({
   };
 
   const renderRecipes = ({ item }: { item: Recipe }) => {
-    return <RecipeCard image={item.photo_url} title={item.title} subTitle={getCategoryName(item.categoryId)} onPress={()=>{onPressRecipe(item)}} />;
+    return (
+      <RecipeCard
+        image={item.photo_url}
+        title={item.title}
+        subTitle={getCategoryName(item.categoryId)}
+        onPress={() => {
+          onPressRecipe(item);
+        }}
+      />
+    );
   };
 
   return (

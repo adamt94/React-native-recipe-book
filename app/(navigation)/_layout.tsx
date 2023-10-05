@@ -23,7 +23,7 @@ export default function Layout() {
         headerRight: () => (
           <TouchableOpacity onPress={() => {router.push({pathname: "search"})}}>
             <View className="rounded-full items-center justify-center">
-              <Ionicons name="search-sharp" size={24} color={theme.textColor.onPrimaryContainer} />
+              <Ionicons name="search-sharp" size={24} color={colorScheme === 'light'? theme.textColor.onPrimaryContainer : theme.textColor.onPrimaryContainerDark} />
             </View>
           </TouchableOpacity>
         ),

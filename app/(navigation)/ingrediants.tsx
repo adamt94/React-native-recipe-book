@@ -1,9 +1,15 @@
-import IngredientsScreen from '@/screens/Ingredients';
-
+import IngredientsScreen from "@/screens/Ingredients";
+import { Stack } from "expo-router";
 
 const Ingrediants = () => (
   <>
-    <IngredientsScreen/>
+    <Stack.Screen
+      options={{
+        title: "Ingredients",
+      }}
+    />
+
+    <IngredientsScreen />
   </>
 );
 

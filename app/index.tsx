@@ -1,9 +1,9 @@
-import { Redirect } from 'expo-router';
-
+import { Redirect, Stack } from "expo-router";
 
 const Home = () => (
   <>
-    <Redirect href={'(drawer)/home'} />
+    <Stack.Screen/>
+      <Redirect href={"(drawer)/home"} />
   </>
 );
 
